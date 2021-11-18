@@ -7,20 +7,16 @@ mouseY,
 closeEnough = 10,
 dragTL = dragBL = dragTR = dragBR = false;
 
-ctx.beginPath();
-ctx.rect(20, 20, 150, 100);
-ctx.stroke();
-
 function init() {
 canvas.addEventListener('mousedown', mouseDown, false);
 canvas.addEventListener('mouseup', mouseUp, false);
 canvas.addEventListener('mousemove', mouseMove, false);
 
 rect = {
-    startX: 800,
-    startY: 800,
-    w: 300,
-    h: 200
+    startX: 20,
+    startY: 20,
+    w: 150,
+    h: 100
 }
 }
 

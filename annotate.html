@@ -6,6 +6,7 @@
 
 		<!-- Name of the app -->
 		<title>Camera App</title>
+		<link rel="stylesheet" href="style.css"> 
 
 		<!-- Link to main style sheet -->
 		<link rel="stylesheet" href="style.css"> 
@@ -14,6 +15,8 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/1e06482f92.js" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/konva@8.3.0/konva.min.js"></script>
+
 		<script type="module">
 			// Import the functions you need from the SDKs you need
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
@@ -40,34 +43,12 @@
 
 	</head>
 	<body>
-
-		<!-- Camera -->
-		<main id="camera">
-
-			<div id="camera--header">
-				<i class="fas fa-bars"></i>
-				<div id = "title">
-					<!-- <span> SCC Camera App </span> -->
-					<a href="./annotate.html"><span id = "annotate"> Annotate </span></a>
-				</div>
-			</div>
-
-		    <!-- Camera sensor -->
-		    <canvas id="camera--sensor"></canvas>
-		    
-		    <!-- Camera view -->
-		    <video id="camera--view" autoplay playsinline></video>
-		    
-		    <!-- Camera output -->
-		    <img src="//:0" alt="" id="camera--output">
-
-		    <!-- Camera trigger -->
-			<div id="shutter_holder"><img id="camera--trigger" src="./images/camera_icon.png"/></div>
-
-		</main>
-
-		<!-- Reference to your JavaScript file -->
-		<script src="app.js"></script> 
-
+		
+		<div id="camera--header">
+			<i class="fas fa-bars"></i>
+			<a href="./index.html"><span id = "annotate"> Home </span></a>
+		</div>
+		<div id="container"></div>
+		<script src="annotate.js"></script> 
 	</body>
 </html>
