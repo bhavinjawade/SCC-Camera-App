@@ -138,7 +138,7 @@ imageObj.onload = function () {
         });
     }
 
-    stage.on('dbltap', function (e) {
+    stage.on('dblclick dbltap', function (e) {
         console.log(e)
         // if we are selecting with rect, do nothing
         if (selectionRectangle.visible()) {
