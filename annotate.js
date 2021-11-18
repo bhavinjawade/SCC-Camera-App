@@ -139,7 +139,7 @@ imageObj.onload = function () {
     }
 
     // clicks should select/deselect shapes
-    stage.on('click tap', function (e) {
+    stage.on('click', function (e) {
         console.log(e)
         // if we are selecting with rect, do nothing
         if (selectionRectangle.visible()) {
