@@ -138,32 +138,6 @@ imageObj.onload = function () {
         });
     }
 
-    // clicks should select/deselect shapes
-    stage.on('click', function (e) {
-        console.log(e)
-        // if we are selecting with rect, do nothing
-        if (selectionRectangle.visible()) {
-            console.log("Rectangle")
-            return;
-        }
-
-        // if click on empty area - remove all selections
-        if (e.target === stage) {
-            console.log("Empty Area")
-            tr.nodes([]);
-            return;
-        }
-
-        // do nothing if clicked NOT on our rectangles
-
-        if (e.target.className == 'Image') {
-            console.log("Empty Area - not rect", e)
-            var pos = stage.getPointerPosition();
-            createRect(pos.x, pos.y)
-            return;
-        }
-    });
-
     stage.on('dbltap', function (e) {
         console.log(e)
         // if we are selecting with rect, do nothing
