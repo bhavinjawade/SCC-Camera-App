@@ -83,6 +83,9 @@ imageObj.onload = function () {
 
     function createRect(x, y){
         console.log("Inside createRect")
+        var group = new Konva.Group({
+            name: 'rect_btn_grp'
+        })
         var rect2 = new Konva.Rect({
             x: x,
             y: y,
@@ -113,27 +116,26 @@ imageObj.onload = function () {
             padding: 5,
             fill: 'black'
           }));
-          
-          
-          button.on('click', () => {
-              alert('clicked on canvas button');
-          })
-
-        layer.add(rect2);
-        layer.add(button);      
+        // layer.add(rect2);
+        // layer.add(button); 
+        // layer.add(tr1);
+     
 
         var tr1 = new Konva.Transformer();
         tr1.borderStrokeWidth(3);
         tr1.borderStroke("white")
-        layer.add(tr1);
         // by default select all shapes
         var nodelist = [rect2, button]
         tr1.nodes(nodelist);
-
+        group.add(rect2)
+        group.add(button)
+        group.add(tr1)
+        layer.add(group);        
         button.on('click tap', function (e) {
             tr1.destroy();
             rect2.destroy();
             button.destroy();
+            group.destroy();
             layer.draw();
         });
     }
@@ -159,6 +161,8 @@ imageObj.onload = function () {
             console.log("Empty Area - not rect", e)
             var pos = stage.getPointerPosition();
             createRect(pos.x, pos.y)
+            var all_rectangles = layer.find('.rect_btn_grp');
+            console.log(all_rectangles)
             return;
         }
     });
