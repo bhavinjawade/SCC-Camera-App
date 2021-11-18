@@ -9,14 +9,28 @@ html, body{
     display: none;
 }
 
+#title{
+    float: left;
+}
+
+#annotate-button{
+    float: right;
+    padding: 3%;
+    clear: both;
+    margin-top: -26px;
+    background-color: #e2e2e2;
+    border-radius: 6px;
+}
+
 #camera--header{
     font-family: 'Montserrat', sans-serif;
     display: block;
     height: 0%;
     padding: 7%;
     padding-bottom: 13%;
+    display: inline-block;
     font-weight: 800;
-    width: 100%;
+    width: -webkit-fill-available;
     background-color: white;
     box-shadow: 0px 2px 25px #d8d6d6;
 }
