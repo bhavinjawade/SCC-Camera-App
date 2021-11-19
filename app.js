@@ -45,9 +45,9 @@ function sendImages(){
 
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Origin','https://07f1-68-133-40-138.ngrok.io/scc_server_receive');
+    headers.append('Origin','https://291f-68-133-40-138.ngrok.io/scc_server_receive');
 
-    var req = fetch('https://07f1-68-133-40-138.ngrok.io/scc_server_receive', {
+    var req = fetch('https://291f-68-133-40-138.ngrok.io/scc_server_receive', {
         method: 'POST',
         body: fd, /* or aFile[0]*/
         mode: 'no-cors',
