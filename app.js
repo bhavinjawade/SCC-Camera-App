@@ -9,6 +9,16 @@ const cameraView = document.querySelector("#camera--view"),
     cameraSensor = document.querySelector("#camera--sensor"),
     cameraTrigger = document.querySelector("#camera--trigger");
 
+document.getElementById("annotate").addEventListener("click", function(){
+    console.log("clicked on button");
+    datadict = {}
+    for(var pair of fd.entries()) {
+        datadict[pair[0]] = pair[1];
+    }
+    localStorage.setItem("images_scc", JSON.stringify(Array.from(Object.entries(datadict))));
+    window.location.href = 'annotate.html';
+});
+
 // Access the device camera and stream to cameraView
 function cameraStart() {
     navigator.mediaDevices
@@ -22,8 +32,12 @@ function cameraStart() {
         });
 }
 count = 0
+// Start the video stream when the window loads
+window.addEventListener("load", cameraStart, false);
+
 // Take a picture when cameraTrigger is tapped
 cameraTrigger.onclick = function() {
+
     count += 1
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
@@ -36,9 +50,6 @@ cameraTrigger.onclick = function() {
     fd.append('image_' + count, cameraOutput.src)
     // track.stop();
 };
-
-// Start the video stream when the window loads
-window.addEventListener("load", cameraStart, false);
 
 function sendImages(){
     let headers = new Headers();

@@ -1,8 +1,8 @@
-html, body{
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+html,body{
+    overflow: hidden;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 #camera--output{
@@ -25,6 +25,29 @@ html, body{
     margin-top: -26px;
     background-color: #e2e2e2;
     border-radius: 6px;
+}
+
+#glabel{
+    padding: 5%;
+    border-bottom: 2px solid #e5e4e4;
+    font-weight: 800;
+}
+
+.label_box{
+    position: fixed;
+    bottom: 0;
+    /* padding: 3%; */
+    width: 100%;
+    box-shadow: 0px 2px 15px 5px #838383;
+    font-family: 'Montserrat';
+    /* padding-left: 4%; */
+    height: 8%;
+    opacity: 0.8;
+    background-color:white;
+    transition:0.4s;
+    z-index:1000;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 37px;
 }
 
 #camera--header{
@@ -91,4 +114,22 @@ html, body{
     top: 15%;
     right: 20px;
     z-index: 2;
+}
+
+#img_thumbnails {
+    width: 100%;
+    height: auto;
+    margin: 3%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: block;
+    white-space: nowrap;
+}
+
+.imgthumb{
+    width: 50;
+    height: 50;
+    box-shadow: 0px 2px 2px 2px #e2e2e2;
+    display: inline-block;
+    margin-right: 5px;
 }
