@@ -1,8 +1,25 @@
 'use strict';
 var open = false;
+
+var ImageAnnotations = {}
+var currentImage = ""
+
+document.getElementById("save_btn").addEventListener("click", function(){
+    var attributes = [];
+    var allElements = document.querySelectorAll(".select2-selection__choice");    
+    for (var i = 0; i < allElements.length; i++) {
+        if (allElements[i].getAttribute("title")) {
+            attributes.push(allElements[i].getAttribute("title"));
+        }
+    }
+    ImageAnnotations["img_"+currentImage]["tags"] = attributes;
+    ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
+    sendImages(ImageAnnotations["img_"+currentImage])
+});
+
 document.getElementById("icon_exp").addEventListener("click", function(){
     if (!open){
-        document.getElementById("label_box").style.height="25%";
+        document.getElementById("label_box").style.height="32%";
         document.getElementById("label_box").style.opacity=1;
         document.getElementById("arrowoicon").style.transform="rotate(180deg)";    
         open = true;
@@ -46,6 +63,9 @@ var elements = document.getElementsByClassName("imgthumb");
 for (var i = 0; i < elements.length; i++) {
     elements[i].data_id = i;
     elements[i].addEventListener('click', function (evt) {
+        currentImage = evt.currentTarget.data_id;
+        ImageAnnotations["img_" + evt.currentTarget.data_id] = {image_id: evt.currentTarget.data_id}
+        console.log(ImageAnnotations)
         changeImage(evt)
         var imageObj = new Image();
         imageObj.src = evt.srcElement.currentSrc;
@@ -74,10 +94,6 @@ for (var i = 0; i < elements.length; i++) {
             var selectionRectangle = new Konva.Rect({
                 fill: 'rgba(0,0,255,0.5)',
                 visible: false,
-            });
-
-            selectionRectangle.on("dblclick dbltap", (e) => {
-                console.log("Clicked on a rectangle")
             });
 
             layer.add(selectionRectangle);
@@ -135,7 +151,7 @@ for (var i = 0; i < elements.length; i++) {
                 );
                 tr.nodes(selected);
             });
-
+            var rect_count = 0
             function createRect(x, y) {
                 console.log("Inside createRect")
                 var group = new Konva.Group({
@@ -150,7 +166,8 @@ for (var i = 0; i < elements.length; i++) {
                     name: 'rect',
                     draggable: true,
                 });
-
+                rect2.name('box_'+rect_count)
+                rect_count += 1
                 var button = new Konva.Label({
                     x: x,
                     y: y,
@@ -195,10 +212,10 @@ for (var i = 0; i < elements.length; i++) {
             }
 
             stage.on('dblclick dbltap', function (e) {
-                console.log(e)
+                console.log(e.target.className)
                 // if we are selecting with rect, do nothing
-                if (selectionRectangle.visible()) {
-                    console.log("Rectangle")
+                if (e.target.className == 'Rect') {
+                    console.log("Rectangle", e.target.attrs.name)
                     return;
                 }
 
@@ -223,6 +240,33 @@ for (var i = 0; i < elements.length; i++) {
         };
     });
 }
+
+elements[0].click()
+
+function sendImages(dataToSend){
+    let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append('Origin','http://56f5-2405-201-300b-b11f-648c-e1d8-4489-5614.ngrok.io/scc_server_receive/');
+    console.log(dataToSend)
+    var req = fetch('http://56f5-2405-201-300b-b11f-648c-e1d8-4489-5614.ngrok.io/scc_server_receive/', {
+        method: 'POST',
+        body: JSON.stringify(dataToSend), /* or aFile[0]*/
+        mode: 'no-cors',
+        credentials: 'include',
+        headers: headers
+      }); // returns a promise
+      
+      req.then(function(response) {
+        if (response.ok) {
+        } else {
+        }
+      }, function(error) {
+        console.error('failed due to network error or cross domain')
+      })
+}
+
 
 
 // imageObj.src = 'https://previews.123rf.com/images/posinote/posinote1711/posinote171100095/91013749-mixed-many-type-of-fruits-with-full-frame-and-vertical-photo-.jpg'
