@@ -42,8 +42,10 @@ var width = window.innerWidth;
 var height = window.innerHeight;
 
 var imghtml = ""
+i = 0
 for (const item of images) {
-    imghtml += '<img class="imgthumb" src="' + item[1] + ' "/>'
+    imghtml += '<img class="imgthumb" id="imgth_' +i + '" src="' + item[1] + ' "/>'
+    i += 1;
 }
 
 document.getElementById("img_thumbnails").innerHTML = imghtml;
@@ -248,9 +250,9 @@ function sendImages(dataToSend){
 
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Origin','http://192.168.29.35:105/scc_server_receive/');
+    headers.append('Origin','http://localhost:8080/scc_server_receive/');
     console.log(dataToSend)
-    var req = fetch('http://192.168.29.35:105/scc_server_receive/', {
+    var req = fetch('http://localhost:8080/scc_server_receive/', {
         method: 'POST',
         body: JSON.stringify(dataToSend), /* or aFile[0]*/
         mode: 'no-cors',
@@ -260,6 +262,7 @@ function sendImages(dataToSend){
       
       req.then(function(response) {
         if (response.ok) {
+
         } else {
         }
       }, function(error) {
