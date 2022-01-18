@@ -7,7 +7,7 @@ document.getElementById("icon_exp").addEventListener("click", function(){
         document.getElementById("arrowoicon").style.transform="rotate(180deg)";    
     }else {
         document.getElementById("label_box").style.height="8%";
-        document.getElementById("label_box").style.opacity=0.8;
+        document.getElementById("label_box").style.opacity=1;
         document.getElementById("arrowoicon").style.transform="rotate(360deg)";    
     }
 });

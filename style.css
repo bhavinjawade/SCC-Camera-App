@@ -42,7 +42,7 @@ html,body{
     font-family: 'Montserrat';
     /* padding-left: 4%; */
     height: 8%;
-    opacity: 0.8;
+    opacity: 1;
     background-color:white;
     transition:0.4s;
     z-index:1000;
