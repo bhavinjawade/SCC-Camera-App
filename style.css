@@ -51,7 +51,9 @@ html,body{
 }
 
 #save_btn{
-    width: 65%;
+    outline: #3bd100;
+    border-color: #31ab00;
+    width: 73%;
     margin-left: 5%;
     padding: 4%;
     margin-top: 3%;
@@ -59,6 +61,9 @@ html,body{
     text-align: center;
     border-radius: 6px;
     display: inline-block;
+    font-size: 1.0em;
+    font-family: 'Montserrat';
+    outline: none;
 }
 
 #del_btn{
