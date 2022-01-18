@@ -1,12 +1,20 @@
 'use strict';
 
-document.getElementById("label_box").addEventListener("click", function(){
-    console.log("Clickec");
-    document.getElementById("label_box").style.height="25%";
-    document.getElementById("label_box").style.opacity=1;
-
+document.getElementById("icon_exp").addEventListener("click", function(){
+    if (document.getElementById("label_box").style.opacity != 1){
+        document.getElementById("label_box").style.height="25%";
+        document.getElementById("label_box").style.opacity=1;
+        document.getElementById("arrowoicon").style.transform="rotate(180deg)";    
+    }else {
+        document.getElementById("label_box").style.height="8%";
+        document.getElementById("label_box").style.opacity=0.8;
+        document.getElementById("arrowoicon").style.transform="rotate(360deg)";    
+    }
 });
 
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
 
 var images = localStorage.getItem("images_scc");
 images = JSON.parse(images);
@@ -20,12 +28,23 @@ for (const item of images) {
 }
 
 document.getElementById("img_thumbnails").innerHTML = imghtml;
-var elements = document.getElementsByClassName("imgthumb");
 
+function changeImage(evt){
+    var thumbnails = document.getElementsByClassName("imgthumb");
+    for (var i = 0; i < thumbnails.length; i++ ) {
+        thumbnails[i].style.width = "50px";
+        thumbnails[i].style.height = "50px";
+    }
+    document.getElementById("container").innerHTML = ""
+    evt.currentTarget.style.width = "55px";
+    evt.currentTarget.style.height = "55px";
+}
+
+var elements = document.getElementsByClassName("imgthumb");
 for (var i = 0; i < elements.length; i++) {
     elements[i].data_id = i;
     elements[i].addEventListener('click', function (evt) {
-        document.getElementById("container").innerHTML = ""
+        changeImage(evt)
         var imageObj = new Image();
         imageObj.src = evt.srcElement.currentSrc;
         console.log(imageObj.width, imageObj.height, evt.currentTarget.data_id);

@@ -46,8 +46,8 @@ html,body{
     background-color:white;
     transition:0.4s;
     z-index:1000;
-    border-top-left-radius: 32px;
-    border-top-right-radius: 37px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 #camera--header{
@@ -61,6 +61,26 @@ html,body{
     width: 89vw;    
     background-color: white;
     box-shadow: 0px 2px 25px #d8d6d6;
+}
+
+#arrowoicon{
+    transition:0.7s;
+}
+
+.select2-container{
+    padding: 5% !important;
+    width: 100% !important;
+    padding-top: 2% !important;
+}
+
+#icon_exp{
+    float: right;
+    border-radius: 45px;
+    padding: 8px;
+    padding-right: 10px;
+    clear: both;
+    margin-top: -2%;
+    background-color: #f5f5f5;
 }
 
 /* #camera--header{
@@ -118,18 +138,57 @@ html,body{
 
 #img_thumbnails {
     width: 100%;
-    height: auto;
+    height: 55px;
     margin: 3%;
     overflow-x: scroll;
     overflow-y: hidden;
     display: block;
     white-space: nowrap;
+    padding-bottom: 5%;
+    margin-bottom: 0;
 }
 
 .imgthumb{
     width: 50;
+    border-radius: 8px;
     height: 50;
     box-shadow: 0px 2px 2px 2px #e2e2e2;
     display: inline-block;
     margin-right: 5px;
+    transition:0.2s;
+}
+
+.select2-selection{
+    border: none;
+    border: 1px solid #b5b5b5 !important;
+    border-radius: 7px;
+    min-height: 47px !important;
+    height: 47px;
+    font-size: 1.4em;
+    padding: 1%;
+    padding-left:1%;
+    overflow: scroll;
+    padding-bottom: 3% !important;
+}
+
+.select2-dropdown{
+    font-family: 'Montserrat';
+    border: 2px solid #e2e2e2;
+    width: 100%;
+}
+
+.select2-selection__choice{
+    background-color:white !important;
+    border:None;
+    padding-bottom: 4px !important;
+    padding-top: 2px !important;
+    padding-right: 3px !important;
+    margin-top: 0px !important;
+}
+.select2-selection__choice__remove{
+    border:None !important;
+}
+
+.select2-search__field{
+    height:100% !important;
 }
