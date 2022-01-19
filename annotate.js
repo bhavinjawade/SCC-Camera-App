@@ -4,6 +4,17 @@ var open = false;
 var ImageAnnotations = {}
 var currentImage = ""
 
+fetch('./fruits.txt')
+  .then(response => response.text())
+  .then(text => {
+      console.log(text);
+      var fruits = text.split('\n');
+      for (var i=0; i < fruits.length; i++){
+        document.getElementById("fruits_selector").innerHTML += '<option value="' + fruits[i] + '">' + fruits[i] + '</option>'
+      }
+    })
+  // outputs the content of the text file
+
 document.getElementById("save_btn").addEventListener("click", function(){
     var attributes = [];
     var allElements = document.querySelectorAll(".select2-selection__choice");    
