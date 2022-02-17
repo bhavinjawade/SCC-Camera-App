@@ -2,7 +2,7 @@
 var constraints = { video: { facingMode: {exact: 'environment'}}, audio: false };
 var track = null;
 var fd = new FormData();
-var base_app_url = "http://128.205.33.32:5000/"
+var base_app_url = "https://128.205.33.32:5000/"
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),

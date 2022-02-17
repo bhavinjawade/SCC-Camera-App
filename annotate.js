@@ -4,7 +4,7 @@ var open = false;
 var ImageAnnotations = {}
 var currentImage = ""
 
-var base_app_url = "http://128.205.33.32:5000/"
+var base_app_url = "https://128.205.33.32:5000/"
 
 fetch('./fruits.txt')
   .then(response => response.text())
