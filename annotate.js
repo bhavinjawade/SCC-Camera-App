@@ -4,6 +4,8 @@ var open = false;
 var ImageAnnotations = {}
 var currentImage = ""
 
+var base_app_url = "http://128.205.33.32:5000/"
+
 fetch('./fruits.txt')
   .then(response => response.text())
   .then(text => {
@@ -261,9 +263,9 @@ function sendImages(dataToSend){
 
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Origin','http://localhost:8080/scc_server_receive/');
+    headers.append('Origin',base_app_url + '/scc_server_receive/');
     console.log(dataToSend)
-    var req = fetch('http://localhost:8080/scc_server_receive/', {
+    var req = fetch(base_app_url + '/scc_server_receive/', {
         method: 'POST',
         body: JSON.stringify(dataToSend), /* or aFile[0]*/
         mode: 'no-cors',
