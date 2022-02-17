@@ -2,7 +2,7 @@
 var constraints = { video: { facingMode: {exact: 'environment'}}, audio: false };
 var track = null;
 var fd = new FormData();
-
+var base_app_url = "http://128.205.33.32:5000/"
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
@@ -56,9 +56,9 @@ function sendImages(){
 
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Origin','https://291f-68-133-40-138.ngrok.io/scc_server_receive/');
+    headers.append('Origin',base_app_url + '/scc_server_receive/');
 
-    var req = fetch('https://291f-68-133-40-138.ngrok.io/scc_server_receive/', {
+    var req = fetch(base_app_url + '/scc_server_receive/', {
         method: 'POST',
         body: fd, /* or aFile[0]*/
         mode: 'no-cors',

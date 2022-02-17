@@ -4,7 +4,7 @@ import sys
 import random
 import string
 import json
-BASE_ADR = "../"
+BASE_ADR = "./"
 app = Flask(__name__)
 
 @app.route('/scc_server_receive/', methods=['GET', 'POST'])
@@ -22,4 +22,4 @@ def scc_server_receive():
     return {"status": 200}
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=5000)
