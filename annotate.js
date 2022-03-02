@@ -46,7 +46,7 @@ document.getElementById("save_btn").addEventListener("click", function(){
     }
 
     ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
-    ImageAnnotations["seq_id"]["location"] = currentImage
+    ImageAnnotations["img_"+currentImage]["seq_id"] = currentImage
     sendImages(ImageAnnotations["img_"+currentImage])
 });
 
