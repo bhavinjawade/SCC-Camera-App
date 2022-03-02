@@ -12,6 +12,7 @@ function getlocation() {
 var latitude = ""
 var longitude = ""
 function setLoc(pos) {
+    print(pos)
     var latitude = pos.coords.latitude;
     var longitude = pos.coords.longitude;
 }
@@ -35,6 +36,7 @@ document.getElementById("save_btn").addEventListener("click", function(){
             attributes.push(allElements[i].getAttribute("title"));
         }
     }
+    getlocation()
     ImageAnnotations["img_"+currentImage]["tags"] = attributes;
     ImageAnnotations["img_"+currentImage]["isfimp"] = document.getElementById("isfimp").checked;
     ImageAnnotations["img_"+currentImage]["ispa"] = document.getElementById("ispa").checked;
