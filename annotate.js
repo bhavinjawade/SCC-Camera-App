@@ -26,6 +26,8 @@ document.getElementById("save_btn").addEventListener("click", function(){
         }
     }
     ImageAnnotations["img_"+currentImage]["tags"] = attributes;
+    ImageAnnotations["img_"+currentImage]["isfimp"] = document.getElementById("isfimp").checked;
+    ImageAnnotations["img_"+currentImage]["ispa"] = document.getElementById("ispa").checked;
     ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
     sendImages(ImageAnnotations["img_"+currentImage])
 });
