@@ -51,7 +51,7 @@ document.getElementById("save_btn").addEventListener("click", function(){
 
 document.getElementById("icon_exp").addEventListener("click", function(){
     if (!open){
-        document.getElementById("label_box").style.height="32%";
+        document.getElementById("label_box").style.height="41%";
         document.getElementById("label_box").style.opacity=1;
         document.getElementById("arrowoicon").style.transform="rotate(180deg)";    
         open = true;
