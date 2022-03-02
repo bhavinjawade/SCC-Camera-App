@@ -46,6 +46,7 @@ document.getElementById("save_btn").addEventListener("click", function(){
     }
 
     ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
+    ImageAnnotations["seq_id"]["location"] = currentImage
     sendImages(ImageAnnotations["img_"+currentImage])
 });
 
@@ -278,6 +279,8 @@ for (var i = 0; i < elements.length; i++) {
 elements[0].click()
 
 function sendImages(dataToSend){
+
+
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
@@ -294,6 +297,10 @@ function sendImages(dataToSend){
       
       req.then(function(response) {
         if (response.ok) {
+            console.log("Image saved")
+            document.getElementById("label_box").style.height="41%";
+            document.getElementById("imgth_" + dataToSend["seq_id"]).opacity = "0.5"
+            document.getElementById("imgth_" + (dataToSend["seq_id"] + 1)).click();
 
         } else {
         }
