@@ -6,6 +6,16 @@ var currentImage = ""
 
 var base_app_url = "https://286d-128-205-33-32.ngrok.io"
 
+function getlocation() {
+  navigator.geolocation.getCurrentPosition(setLoc);
+}
+var latitude = ""
+var longitude = ""
+function setLoc(pos) {
+    var latitude = pos.coords.latitude;
+    var longitude = pos.coords.longitude;
+}
+
 fetch('./fruits.txt')
   .then(response => response.text())
   .then(text => {
@@ -28,6 +38,11 @@ document.getElementById("save_btn").addEventListener("click", function(){
     ImageAnnotations["img_"+currentImage]["tags"] = attributes;
     ImageAnnotations["img_"+currentImage]["isfimp"] = document.getElementById("isfimp").checked;
     ImageAnnotations["img_"+currentImage]["ispa"] = document.getElementById("ispa").checked;
+    ImageAnnotations["img_"+currentImage]["location"] = {
+        "latitude": latitude,
+        "longitude": longitude
+    }
+
     ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
     sendImages(ImageAnnotations["img_"+currentImage])
 });
