@@ -4,6 +4,21 @@ var track = null;
 var fd = new FormData();
 var base_app_url = "https://36fb-128-205-33-32.ngrok.io"
 // Define constants
+function getlocation() {
+    navigator.geolocation.getCurrentPosition(setLoc);
+}
+getlocation()
+
+var latitude = ""
+var longitude = ""
+function setLoc(pos) {
+    console.log(pos)
+    latitude = pos.coords.latitude;
+    longitude = pos.coords.longitude;
+    localStorage.setItem("latitude",latitude);
+    localStorage.setItem("longitude",longitude);
+}
+
 const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
     cameraSensor = document.querySelector("#camera--sensor"),

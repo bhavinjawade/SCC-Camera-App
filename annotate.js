@@ -9,8 +9,7 @@ var base_app_url = "https://36fb-128-205-33-32.ngrok.io"
 function getlocation() {
   navigator.geolocation.getCurrentPosition(setLoc);
 }
-var latitude = ""
-var longitude = ""
+
 function setLoc(pos) {
     console.log(pos)
     latitude = pos.coords.latitude;
@@ -36,7 +35,6 @@ document.getElementById("save_btn").addEventListener("click", function(){
             attributes.push(allElements[i].getAttribute("title"));
         }
     }
-    getlocation()
     ImageAnnotations["img_"+currentImage]["tags"] = attributes;
     ImageAnnotations["img_"+currentImage]["isfimp"] = document.getElementById("isfimp").checked;
     ImageAnnotations["img_"+currentImage]["ispa"] = document.getElementById("ispa").checked;
@@ -69,6 +67,9 @@ $(document).ready(function() {
 });
 
 var images = localStorage.getItem("images_scc");
+var longitude = localStorage.getItem("longitude");
+var latitude = localStorage.getItem("latitude");
+
 images = JSON.parse(images);
 console.log(images)
 var width = window.innerWidth;
