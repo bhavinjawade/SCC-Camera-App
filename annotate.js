@@ -4,7 +4,7 @@ var open = false;
 var ImageAnnotations = {}
 var currentImage = ""
 
-var base_app_url = "https://286d-128-205-33-32.ngrok.io"
+var base_app_url = "https://36fb-128-205-33-32.ngrok.io"
 
 function getlocation() {
   navigator.geolocation.getCurrentPosition(setLoc);

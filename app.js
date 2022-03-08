@@ -2,7 +2,7 @@
 var constraints = { video: { facingMode: {exact: 'environment'}}, audio: false };
 var track = null;
 var fd = new FormData();
-var base_app_url = "https://286d-128-205-33-32.ngrok.io"
+var base_app_url = "https://36fb-128-205-33-32.ngrok.io"
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
