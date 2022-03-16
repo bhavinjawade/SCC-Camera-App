@@ -9,6 +9,8 @@ function getlocation() {
 }
 getlocation()
 
+screen.orientation.lock();
+
 var latitude = ""
 var longitude = ""
 function setLoc(pos) {
