@@ -1,18 +1,16 @@
-function hideAddressBar()
-{
-  if(!window.location.hash)
-  {
-      if(document.height < window.outerHeight)
-      {
-          document.body.style.height = (window.outerHeight + 50) + 'px';
-      }
-
-      setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+function openFullscreen() {
+    document.getElementById("splash").remove();
+    elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
   }
-}
 
-window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
-window.addEventListener("orientationchange", hideAddressBar );
+// Launch fullscreen for browsers that support it!
 
 // Set constraints for the video stream
 var constraints = { video: { facingMode: {exact: 'environment'}}, audio: false };
@@ -24,8 +22,6 @@ function getlocation() {
     navigator.geolocation.getCurrentPosition(setLoc);
 }
 getlocation()
-
-screen.orientation.lock();
 
 var latitude = ""
 var longitude = ""

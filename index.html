@@ -20,17 +20,22 @@
 	<body>
 
 		<!-- Camera -->
-		<main id="camera">
 
-			<div id="camera--header">
-				<i class="fas fa-bars"></i>
-				<div id = "title">
-					<!-- <span> SCC Camera App </span> -->
-					<!-- <a href="#" onclick="sendImages()"><span id = "annotate"> Send </span></a> -->
-					<div id="annotate_btn"><span id = "annotate"> Annotate </span></div>
-				</div>
+		<div id="splash">
+			<div id="startbtn" onclick="openFullscreen()">
+				Start Data Collection
 			</div>
+		</div>
 
+		<div id="camera--header">
+			<i class="fas fa-bars"></i>
+			<div id = "title">
+				<!-- <span> SCC Camera App </span> -->
+				<!-- <a href="#" onclick="sendImages()"><span id = "annotate"> Send </span></a> -->
+				<div id="annotate_btn"><span id = "annotate"> Annotate </span></div>
+			</div>
+		</div>
+		<main id="camera">
 		    <!-- Camera sensor -->
 		    <canvas id="camera--sensor"></canvas>
 		    
