@@ -298,14 +298,11 @@ function sendImages(dataToSend){
       
       req.then(function(response) {
         console.log(response)
-        if (response.ok) {
-            console.log("Image saved")
-            document.getElementById("label_box").style.height="41%";
-            document.getElementById("imgth_" + dataToSend["seq_id"]).opacity = "0.5"
-            document.getElementById("imgth_" + (dataToSend["seq_id"] + 1)).click();
-            window.alert("Image and Data Saved To Server")
-        } else {
-        }
+        console.log("Image saved")
+        document.getElementById("label_box").style.height="41%";
+        document.getElementById("imgth_" + dataToSend["seq_id"]).opacity = "0.5"
+        document.getElementById("imgth_" + (dataToSend["seq_id"] + 1)).click();
+        window.alert("Image and Data Saved To Server")
       }, function(error) {
         alert('Saving failed due to network error or cross domain')
       })
