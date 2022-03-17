@@ -297,7 +297,7 @@ function sendImages(dataToSend){
       }); // returns a promise
       
       req.then(function(response) {
-        console.log(response)
+        console.log(response.text())
         if (response.ok) {
             console.log("Image saved")
             document.getElementById("label_box").style.height="41%";
