@@ -297,7 +297,7 @@ function sendImages(dataToSend){
       }); // returns a promise
       
       req.then(function(response) {
-        console.log(response.text())
+        console.log(response)
         if (response.ok) {
             console.log("Image saved")
             document.getElementById("label_box").style.height="41%";
@@ -307,7 +307,7 @@ function sendImages(dataToSend){
         } else {
         }
       }, function(error) {
-        console.error('failed due to network error or cross domain')
+        alert('Saving failed due to network error or cross domain')
       })
 }
 
