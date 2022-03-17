@@ -15,6 +15,52 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/1e06482f92.js" crossorigin="anonymous"></script>
+		<style>
+			@media screen and (orientation: landscape) {
+    html {
+      transform: rotate(-90deg);
+      transform-origin: left top;
+      width: 100vh;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+    #camera--header{
+        font-family: 'Montserrat', sans-serif;
+        display: block;
+        height: 0%;
+        padding: 7%;
+        padding-bottom: 13%;
+        display: inline-block;
+        font-weight: 800;
+        width: 43vw !important;
+        background-color: white;
+        box-shadow: 0px 2px 25px #d8d6d6;
+    }
+    #shutter_holder {
+        position: fixed;
+        bottom: -170vh !important;        
+        width: 100%;
+        max-height: 100vh;
+    }
+    #camera--output{
+        top: 13vw !important;
+        position: fixed;
+        object-fit: cover;
+    }
+    #camera, #camera--view, #camera--sensor {
+        position: fixed !important;
+        height: 100vw !important;
+        width: 100vw !important;
+        object-fit: cover !important;
+    }
+    #camera--view, #camera--sensor, #camera--output {
+        transform: scaleX(1) !important;
+        transform: rotate(90deg) !important;
+    }
+}
+
+		</style>
 
 	</head>
 	<body>
