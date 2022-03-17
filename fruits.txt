@@ -1,6 +1,5 @@
-
 Aburana
-Acorn squash/Pepper squash
+Acorn squash/pepper squash
 Ahipa
 Alfalfa sprouts
 Amaranth
@@ -11,38 +10,38 @@ Arame
 Arracacha
 Arrowhead
 Arrowroot
-Artichoke/Globe artichoke
-Arugula/Salad rocket
+Artichoke/globe artichoke
+Arugula/salad rocket
 Asparagus
 Azuki beans
-Bamboo shoots/Bamboo sprouts
+Bamboo shoots/bamboo sprouts
 Banana squash
-Basil/Sweet basil
+Basil/sweet basil
 Bean sprouts
 Beans
 Beet
 Belgian endive
-Bell pepper/Sweet pepper
+Bell pepper/sweet pepper
 Bitter leaf
-Bitter melon/Bitter gourd/Bitter squash
+Bitter melon/bitter gourd/bitter squash
 Black beans
 Black cumin
 Black-eyed peas
-Bok choy/Chinese cabbage
+Bok choy/chinese cabbage
 Borage
 Borlotti beans
-Bottle gourd/Calabash
+Bottle gourd/calabash
 Breadfruit
 Broadleaf arrowhead
 Broccoli
-Broccolini/Baby broccoli
+Broccolini/baby broccoli
 Brussels sprout
 Bull's blood
 Burdock
-Butter beans/Lima beans
+Butter beans/lima beans
 Buttercup squash
 Butterhead lettuce
-Butternut pumpkin/Butternut squash
+Butternut pumpkin/butternut squash
 Cabbage
 Cabbage sprouts
 Cactus leaves
@@ -50,10 +49,10 @@ Caigua
 Camas
 Cape gooseberry
 Caraway
-Cardoon/Artichoke thistle
+Cardoon/artichoke thistle
 Carola
 Carrot
-Cassava/Yuca
+Cassava/yuca
 Catsear
 Cauliflower
 Cayenne pepper
@@ -61,53 +60,53 @@ Celeriac
 Celery
 Celtuce
 Ceylon spinach
-Chaya/Tree spinach
-Chayote/Christophene
+Chaya/tree spinach
+Chayote/christophene
 Cherry tomatoes
 Chickweed
 Chicory
 Chile peppers
-Chinese chives/Garlic chives
+Chinese chives/garlic chives
 Chinese mallow
 Chinese snow peas
 Chives
 Choy sum
 Chrysanthemum leaves
-Cilantro/Coriander
+Cilantro/coriander
 Collard greens
 Coral lettuce
 Corn
-Corn salad/Lamb's lettuce
+Corn salad/lamb's lettuce
 Cucumber
 Dabberlocks/badderlocks
 Daikon
 Dandelion
 Delicata squash
-Dill/Lao coriander
-Dinosaur kale/Lacinato kale
+Dill/lao coriander
+Dinosaur kale/lacinato kale
 Dolichos beans
 Drumsticks
 Dulse
 Earthnut pea
 Edamame
-Eggplant/Aubergine
+Eggplant/aubergine
 Elephant foot yam
 Elephant garlic
 Endive
-English peas/Peas
+English peas/peas
 Ensete
 Epazote
 Escarole
 Fat hen
-Fava beans/Broad beans
-Fennel/Finocchio
+Fava beans/broad beans
+Fennel/finocchio
 Fiddlehead fern
 Florence fennel
 Flowering cabbage
 Fluted pumpkin
-French beans/Green beans
-Garbanzo beans/Chickpeas
-Garden cress/Cress
+French beans/green beans
+Garbanzo beans/chickpeas
+Garden cress/cress
 Garden rocket
 Garlic
 Gem squash
@@ -115,9 +114,9 @@ Gherkin
 Ginger
 Globe eggplant
 Gobo
-Golden Samphire
+Golden samphire
 Golden nugget squash
-Good King Henry
+Good king henry
 Gourd
 Grape tomato
 Greater plantain
@@ -145,16 +144,16 @@ Italian sweet pepper
 Jalapeño
 Japanese bunching onion
 Japanese eggplant
-Japanese pumpkin/Kabocha squash
+Japanese pumpkin/kabocha squash
 Japanese turnips
-Jerusalem artichoke/Sunchoke
+Jerusalem artichoke/sunchoke
 Jícama
 Kabu
-Kai-lan/Chinese broccoli
+Kai-lan/chinese broccoli
 Kale
 Kelps
 Kidney beans
-Kohlrabi/German turnip
+Kohlrabi/german turnip
 Komatsuna
 Kombu
 Kuka
@@ -184,7 +183,7 @@ Miner's lettuce
 Minikin
 Mitsuba
 Mizuna
-Morel/Morchella
+Morel/morchella
 Moth beans
 Mountain pepper
 Mozuku
@@ -199,7 +198,7 @@ Nasu
 Navy beans
 Negi
 Nettles
-New Zealand spinach
+New zealand spinach
 Nopales
 Nori
 Oakleaf lettuce
@@ -210,7 +209,7 @@ Onions
 Orache
 Ostrich fern
 Oyster plant
-Pak choi/Chinese cabbage
+Pak choi/chinese cabbage
 Palm heart
 Paracress
 Parsley
@@ -237,7 +236,7 @@ Radicchio
 Radish
 Rainbow chard
 Rapeseed
-Rapini/Broccoli rabé
+Rapini/broccoli rabé
 Red bell peppers
 Red cabbage
 Red kidney beans
@@ -247,36 +246,36 @@ Ridge cucumber
 Ridge gourd
 Rocket
 Rockmelon
-Romaine lettuce/Cos lettuce
+Romaine lettuce/cos lettuce
 Romanesco broccoli
 Romano beans
 Rosemary
 Runner beans
-Rutabaga/Swedish turnips
+Rutabaga/swedish turnips
 Salad turnip
 Salsify
 Samphire
 Satoimo
-Satsumaimo​/Sweet potato
+Satsumaimo​/sweet potato
 Savoy cabbage
-Scallions/Spring onions
+Scallions/spring onions
 Scorzonera
-Sculpit/Stridolo
+Sculpit/stridolo
 Sea beet
 Sea grape
 Sea kale
 Sea lettuce
 Shallots
-Shiso/Ohba
+Shiso/ohba
 Sierra leone bologi
-Silverbeet/Chard
+Silverbeet/chard
 Skirret
 Sloke
 Snake beans
 Snake gourd
 Snake squash
 Snow peas
-Soko/Lagos spinach
+Soko/lagos spinach
 Sorrel
 Soybeans
 Spaghetti squash
@@ -291,7 +290,7 @@ T-plant
 Tabasco pepper
 Taro
 Tarwi
-Tatsoi/Spinach mustard
+Tatsoi/spinach mustard
 Tepary beans
 Thyme
 Tigernut
@@ -310,8 +309,8 @@ Water chestnut
 Water spinach
 Watercress
 Welsh onion
-West Indian gherkin
-West Indian pumpkin
+West indian gherkin
+West indian pumpkin
 White eggplant
 White salad onion
 Wild leek
@@ -330,84 +329,78 @@ Yau chow
 Yellow squash
 Yow choy
 Yu choy sum
-Zucchini/Courgette
-apple
-apricot
-avocado
-banana
-bell pepper
-bilberry
-blackberry
-blackcurrant
-blood orange
-blueberry
-boysenberry
-breadfruit
-canary melon
-cantaloupe
-cherimoya
-cherry
-chili pepper
-clementine
-cloudberry
-coconut
-cranberry
-cucumber
-currant
-damson
-date
-dragonfruit
-durian
-eggplant
-elderberry
-feijoa
-fig
-goji berry
-gooseberry
-grape
-grapefruit
-guava
-honeydew
-huckleberry
-jackfruit
-jambul
-jujube
-kiwi fruit
-kumquat
-lemon
-lime
-loquat
-lychee
-mandarine
-mango
-mulberry
-nectarine
-nut
-olive
-orange
-papaya
-passionfruit
-peach
-pear
-persimmon
-physalis
-pineapple
-plum
-pomegranate
-pomelo
-purple mangosteen
-quince
-raisin
-rambutan
-raspberry
-redcurrant
-rock melon
-salal berry
-satsuma
-star fruit
-strawberry
-tamarillo
-tangerine
-tomato
-ugli fruit
-watermelon
+Zucchini/courgette
+Apple
+Apricot
+Avocado
+Banana
+Bell pepper
+Bilberry
+Blackberry
+Blackcurrant
+Blood orange
+Blueberry
+Boysenberry
+Canary melon
+Cantaloupe
+Cherimoya
+Cherry
+Chili pepper
+Clementine
+Cloudberry
+Coconut
+Cranberry
+Currant
+Damson
+Date
+Dragonfruit
+Durian
+Eggplant
+Elderberry
+Feijoa
+Fig
+Goji berry
+Gooseberry
+Grape
+Grapefruit
+Guava
+Honeydew
+Huckleberry
+Jackfruit
+Jambul
+Jujube
+Kiwi fruit
+Kumquat
+Loquat
+Lychee
+Mandarine
+Mango
+Mulberry
+Nectarine
+Nut
+Olive
+Orange
+Papaya
+Passionfruit
+Peach
+Pear
+Persimmon
+Physalis
+Pineapple
+Plum
+Pomegranate
+Pomelo
+Purple mangosteen
+Raisin
+Rambutan
+Raspberry
+Redcurrant
+Rock melon
+Salal berry
+Satsuma
+Star fruit
+Strawberry
+Tamarillo
+Tangerine
+Ugli fruit
+Watermelon
