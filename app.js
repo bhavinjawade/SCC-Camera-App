@@ -8,9 +8,7 @@ function openFullscreen() {
     } else if (elem.msRequestFullscreen) { /* IE11 */
       elem.msRequestFullscreen();
     }
-  }
-
-// Launch fullscreen for browsers that support it!
+}
 
 // Set constraints for the video stream
 var constraints = { video: { facingMode: {exact: 'environment'}}, audio: false };
