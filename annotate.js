@@ -302,7 +302,7 @@ function sendImages(dataToSend){
             document.getElementById("label_box").style.height="41%";
             document.getElementById("imgth_" + dataToSend["seq_id"]).opacity = "0.5"
             document.getElementById("imgth_" + (dataToSend["seq_id"] + 1)).click();
-
+            window.alert("Image and Data Saved To Server")
         } else {
         }
       }, function(error) {
