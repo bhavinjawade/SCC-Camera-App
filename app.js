@@ -1,3 +1,15 @@
+function openFullscreen() {
+    document.getElementById("splash").remove();
+    elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+}
+
 // Set constraints for the video stream
 var constraints = { video: { facingMode: {exact: 'environment'}}, audio: false };
 var track = null;
