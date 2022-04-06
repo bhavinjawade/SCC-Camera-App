@@ -6,6 +6,33 @@ var currentImage = ""
 
 var base_app_url = "https://36fb-128-205-33-32.ngrok.io"
 
+document.getElementById('input-file')
+  .addEventListener('change', getFile)
+
+function getFile(event) {
+	const input = event.target
+    if ('files' in input && input.files.length > 0) {
+        readFileContent(input.files[0]).then(content => {
+            var datadict = JSON.parse(content)
+            localStorage.setItem("images_scc", JSON.stringify(Array.from(Object.entries(datadict))));
+            latitude = datadict["gps_location"][0];
+            longitude = datadict["gps_location"][1];
+            localStorage.setItem("latitude",latitude);
+            localStorage.setItem("longitude",longitude);  
+            window.location.reload();      
+        }).catch(error => console.log(error))
+    }
+}
+
+function readFileContent(file) {
+	const reader = new FileReader()
+  return new Promise((resolve, reject) => {
+    reader.onload = event => resolve(event.target.result)
+    reader.onerror = error => reject(error)
+    reader.readAsText(file)
+  })
+}
+
 function getlocation() {
   navigator.geolocation.getCurrentPosition(setLoc);
 }

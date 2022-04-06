@@ -10,6 +10,14 @@ function openFullscreen() {
     }
 }
 
+function download(content, fileName, contentType) {
+  var a = document.createElement("a");
+  var file = new Blob([content], {type: contentType});
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  a.click();
+}
+
 // Set constraints for the video stream
 var constraints = { video: { facingMode: {exact: 'environment'}}, audio: false };
 var track = null;
@@ -44,6 +52,17 @@ document.getElementById("annotate").addEventListener("click", function(){
     }
     localStorage.setItem("images_scc", JSON.stringify(Array.from(Object.entries(datadict))));
     window.location.href = 'annotate.html';
+});
+
+document.getElementById("saveforlater").addEventListener("click", function(){
+  console.log("clicked on button");
+  datadict = {}
+  for(var pair of fd.entries()) {
+      datadict[pair[0]] = pair[1];
+  }
+  datadict["gps_location"] = [localStorage.getItem("latitude"), localStorage.getItem("longitude")]
+  localStorage.setItem("images_scc", JSON.stringify(Array.from(Object.entries(datadict))));
+  download(JSON.stringify(datadict), "SCC_images.json", 'text/plain')
 });
 
 // Access the device camera and stream to cameraView
