@@ -6,6 +6,31 @@ var currentImage = ""
 
 var base_app_url = "https://36fb-128-205-33-32.ngrok.io"
 
+var items_list = []
+
+fetch('./fruits_list_updated.txt')
+  .then(response => response.text())
+  .then(text => {
+      console.log(text);
+      var fruits = text.split('\n');
+      autocomplete(document.getElementById("myInput"), fruits);
+      autocomplete(document.getElementById("quantity"), ["Ounce", "Pound", "Item", "Gallon"]);
+
+    //   for (var i=0; i < fruits.length; i++){
+    //     document.getElementById("fruits_selector").innerHTML += '<option value="' + fruits[i] + '">' + fruits[i] + '</option>'
+    //   }
+    })
+  // outputs the content of the text file
+
+function additemfunc(){
+    var item = document.getElementById("myInput").value;
+    var price = document.getElementById("price").value;
+    var quantity = document.getElementById("quantity").value;
+    console.log(item, price, quantity)
+    items_list.push([item, price, quantity])
+    document.getElementById("item_tablets").innerHTML += "<div class='tablet'><div class='tabtext item'>" + item + " </div><div class='tabtext price'>&nbsp $"+ price + "</div><div class='tabtext quanity'>/" + quantity + "</div></div>"
+}
+  
 document.getElementById('input-file')
   .addEventListener('change', getFile)
 
@@ -43,25 +68,14 @@ function setLoc(pos) {
     longitude = pos.coords.longitude;
 }
 
-fetch('./fruits.txt')
-  .then(response => response.text())
-  .then(text => {
-      console.log(text);
-      var fruits = text.split('\n');
-      for (var i=0; i < fruits.length; i++){
-        document.getElementById("fruits_selector").innerHTML += '<option value="' + fruits[i] + '">' + fruits[i] + '</option>'
-      }
-    })
-  // outputs the content of the text file
-
 document.getElementById("save_btn").addEventListener("click", function(){
     var attributes = [];
-    var allElements = document.querySelectorAll(".select2-selection__choice");    
+    var allElements = items_list    
     for (var i = 0; i < allElements.length; i++) {
-        if (allElements[i].getAttribute("title")) {
-            attributes.push(allElements[i].getAttribute("title"));
-        }
+        attributes.push(allElements[i]);
     }
+    console.log(attributes)
+
     ImageAnnotations["img_"+currentImage]["tags"] = attributes;
     ImageAnnotations["img_"+currentImage]["isfimp"] = document.getElementById("isfimp").checked;
     ImageAnnotations["img_"+currentImage]["ispa"] = document.getElementById("ispa").checked;
@@ -77,7 +91,7 @@ document.getElementById("save_btn").addEventListener("click", function(){
 
 document.getElementById("icon_exp").addEventListener("click", function(){
     if (!open){
-        document.getElementById("label_box").style.height="41%";
+        document.getElementById("label_box").style.height="83%";
         document.getElementById("label_box").style.opacity=1;
         document.getElementById("arrowoicon").style.transform="rotate(180deg)";    
         open = true;
@@ -162,144 +176,144 @@ for (var i = 0; i < elements.length; i++) {
             layer.add(selectionRectangle);
 
             var x1, y1, x2, y2;
-            stage.on('mousedown touchstart', (e) => {
-                // do nothing if we mousedown on any shape
-                if (e.target !== stage) {
-                    return;
-                }
-                e.evt.preventDefault();
-                x1 = stage.getPointerPosition().x;
-                y1 = stage.getPointerPosition().y;
-                x2 = stage.getPointerPosition().x;
-                y2 = stage.getPointerPosition().y;
+            // stage.on('mousedown touchstart', (e) => {
+            //     // do nothing if we mousedown on any shape
+            //     if (e.target !== stage) {
+            //         return;
+            //     }
+            //     e.evt.preventDefault();
+            //     x1 = stage.getPointerPosition().x;
+            //     y1 = stage.getPointerPosition().y;
+            //     x2 = stage.getPointerPosition().x;
+            //     y2 = stage.getPointerPosition().y;
 
-                selectionRectangle.visible(true);
-                selectionRectangle.width(0);
-                selectionRectangle.height(0);
-            });
+            //     selectionRectangle.visible(true);
+            //     selectionRectangle.width(0);
+            //     selectionRectangle.height(0);
+            // });
 
 
-            stage.on('mousemove touchmove', (e) => {
-                // do nothing if we didn't start selection
-                if (!selectionRectangle.visible()) {
-                    return;
-                }
-                e.evt.preventDefault();
-                x2 = stage.getPointerPosition().x;
-                y2 = stage.getPointerPosition().y;
+            // stage.on('mousemove touchmove', (e) => {
+            //     // do nothing if we didn't start selection
+            //     if (!selectionRectangle.visible()) {
+            //         return;
+            //     }
+            //     e.evt.preventDefault();
+            //     x2 = stage.getPointerPosition().x;
+            //     y2 = stage.getPointerPosition().y;
 
-                selectionRectangle.setAttrs({
-                    x: Math.min(x1, x2),
-                    y: Math.min(y1, y2),
-                    width: Math.abs(x2 - x1),
-                    height: Math.abs(y2 - y1),
-                });
-            });
+            //     selectionRectangle.setAttrs({
+            //         x: Math.min(x1, x2),
+            //         y: Math.min(y1, y2),
+            //         width: Math.abs(x2 - x1),
+            //         height: Math.abs(y2 - y1),
+            //     });
+            // });
 
-            stage.on('mouseup touchend', (e) => {
-                // do nothing if we didn't start selection
-                if (!selectionRectangle.visible()) {
-                    return;
-                }
-                e.evt.preventDefault();
-                // update visibility in timeout, so we can check it in click event
-                setTimeout(() => {
-                    selectionRectangle.visible(false);
-                });
+            // stage.on('mouseup touchend', (e) => {
+            //     // do nothing if we didn't start selection
+            //     if (!selectionRectangle.visible()) {
+            //         return;
+            //     }
+            //     e.evt.preventDefault();
+            //     // update visibility in timeout, so we can check it in click event
+            //     setTimeout(() => {
+            //         selectionRectangle.visible(false);
+            //     });
 
-                var shapes = stage.find('.rect');
-                var box = selectionRectangle.getClientRect();
-                var selected = shapes.filter((shape) =>
-                    Konva.Util.haveIntersection(box, shape.getClientRect())
-                );
-                tr.nodes(selected);
-            });
-            var rect_count = 0
-            function createRect(x, y) {
-                console.log("Inside createRect")
-                var group = new Konva.Group({
-                    name: 'rect_btn_grp'
-                })
-                var rect2 = new Konva.Rect({
-                    x: x,
-                    y: y,
-                    width: 100,
-                    height: 90,
-                    fill: 'transparent',
-                    name: 'rect',
-                    draggable: true,
-                });
-                rect2.name('box_'+rect_count)
-                rect_count += 1
-                var button = new Konva.Label({
-                    x: x,
-                    y: y,
-                    opacity: 0.75,
-                });
-                button.add(new Konva.Tag({
-                    fill: 'white',
-                    lineJoin: 'round',
-                    shadowColor: 'white',
-                    shadowBlur: 10,
-                    shadowOffset: 10,
-                    shadowOpacity: 0.5
-                }));
+            //     var shapes = stage.find('.rect');
+            //     var box = selectionRectangle.getClientRect();
+            //     var selected = shapes.filter((shape) =>
+            //         Konva.Util.haveIntersection(box, shape.getClientRect())
+            //     );
+            //     tr.nodes(selected);
+            // });
+            // var rect_count = 0
+            // function createRect(x, y) {
+            //     console.log("Inside createRect")
+            //     var group = new Konva.Group({
+            //         name: 'rect_btn_grp'
+            //     })
+            //     var rect2 = new Konva.Rect({
+            //         x: x,
+            //         y: y,
+            //         width: 100,
+            //         height: 90,
+            //         fill: 'transparent',
+            //         name: 'rect',
+            //         draggable: true,
+            //     });
+            //     rect2.name('box_'+rect_count)
+            //     rect_count += 1
+            //     var button = new Konva.Label({
+            //         x: x,
+            //         y: y,
+            //         opacity: 0.75,
+            //     });
+            //     button.add(new Konva.Tag({
+            //         fill: 'white',
+            //         lineJoin: 'round',
+            //         shadowColor: 'white',
+            //         shadowBlur: 10,
+            //         shadowOffset: 10,
+            //         shadowOpacity: 0.5
+            //     }));
                 
-                button.add(new Konva.Text({
-                    text: 'X',
-                    fontSize: 18,
-                    padding: 5,
-                    fill: 'black'
-                }));
-                // layer.add(rect2);
-                // layer.add(button); 
-                // layer.add(tr1);                
+            //     button.add(new Konva.Text({
+            //         text: 'X',
+            //         fontSize: 18,
+            //         padding: 5,
+            //         fill: 'black'
+            //     }));
+            //     // layer.add(rect2);
+            //     // layer.add(button); 
+            //     // layer.add(tr1);                
 
-                var tr1 = new Konva.Transformer();
-                tr1.borderStrokeWidth(3);
-                tr1.borderStroke("white")
-                // by default select all shapes
-                var nodelist = [rect2, button]
-                tr1.nodes(nodelist);
-                group.add(rect2)
-                group.add(button)
-                group.add(tr1)
-                layer.add(group);
-                button.on('click tap', function (e) {
-                    tr1.destroy();
-                    rect2.destroy();
-                    button.destroy();
-                    group.destroy();
-                    layer.draw();
-                });
-            }
+            //     var tr1 = new Konva.Transformer();
+            //     tr1.borderStrokeWidth(3);
+            //     tr1.borderStroke("white")
+            //     // by default select all shapes
+            //     var nodelist = [rect2, button]
+            //     tr1.nodes(nodelist);
+            //     group.add(rect2)
+            //     group.add(button)
+            //     group.add(tr1)
+            //     layer.add(group);
+            //     button.on('click tap', function (e) {
+            //         tr1.destroy();
+            //         rect2.destroy();
+            //         button.destroy();
+            //         group.destroy();
+            //         layer.draw();
+            //     });
+            // }
 
-            stage.on('dblclick dbltap', function (e) {
-                console.log(e.target.className)
-                // if we are selecting with rect, do nothing
-                if (e.target.className == 'Rect') {
-                    console.log("Rectangle", e.target.attrs.name)
-                    return;
-                }
+            // stage.on('dblclick dbltap', function (e) {
+            //     console.log(e.target.className)
+            //     // if we are selecting with rect, do nothing
+            //     if (e.target.className == 'Rect') {
+            //         console.log("Rectangle", e.target.attrs.name)
+            //         return;
+            //     }
 
-                // if click on empty area - remove all selections
-                if (e.target === stage) {
-                    console.log("Empty Area")
-                    tr.nodes([]);
-                    return;
-                }
+            //     // if click on empty area - remove all selections
+            //     if (e.target === stage) {
+            //         console.log("Empty Area")
+            //         tr.nodes([]);
+            //         return;
+            //     }
 
-                // do nothing if clicked NOT on our rectangles
+            //     // do nothing if clicked NOT on our rectangles
 
-                if (e.target.className == 'Image') {
-                    console.log("Empty Area - not rect", e)
-                    var pos = stage.getPointerPosition();
-                    createRect(pos.x, pos.y)
-                    var all_rectangles = layer.find('.rect_btn_grp');
-                    console.log(all_rectangles)
-                    return;
-                }
-            });
+            //     if (e.target.className == 'Image') {
+            //         console.log("Empty Area - not rect", e)
+            //         var pos = stage.getPointerPosition();
+            //         createRect(pos.x, pos.y)
+            //         var all_rectangles = layer.find('.rect_btn_grp');
+            //         console.log(all_rectangles)
+            //         return;
+            //     }
+            // });
         };
     });
 }
@@ -326,7 +340,7 @@ function sendImages(dataToSend){
       req.then(function(response) {
         console.log(response)
         console.log("Image saved")
-        document.getElementById("label_box").style.height="41%";
+        document.getElementById("label_box").style.height="83%";
         document.getElementById("imgth_" + dataToSend["seq_id"]).opacity = "0.5"
         //document.getElementById("imgth_" + (dataToSend["seq_id"] + 1)).click();
         window.alert("Image and Data Saved To Server")
@@ -338,3 +352,101 @@ function sendImages(dataToSend){
 
 
 // imageObj.src = 'https://previews.123rf.com/images/posinote/posinote1711/posinote171100095/91013749-mixed-many-type-of-fruits-with-full-frame-and-vertical-photo-.jpg'
+
+function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+  }
+  

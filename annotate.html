@@ -62,17 +62,33 @@
 				<span>Class Labels</span>
 				<span id="icon_exp"><i id = "arrowoicon" class="fas fa-chevron-up"></i></span>
 			</div>
+			<div class="item_tablets" id="item_tablets">
+				
+			</div>
 			<div class = "question" id = "question">
 				<input type="checkbox" id="isfimp" name="Is First Impression" value="True">
 				<label for="isfimp">Is First Impression</label><br>
 				<input type="checkbox" id="ispa" name="Is Produce Available" value="True">
 				<label for="ispa">Is Produce Available</label><br>
 			</div>
-			<div style="padding-left: 5%;margin-top: 3%;">Select Classes</div>
-			<select id="fruits_selector" class="js-example-basic-multiple" name="states[]" multiple="multiple">
-			</select>
-			<button id="save_btn">Send Image and Annotations</button>
-			<div id="del_btn"><i class="fas fa-trash-alt"></i></div>
+			<div style="padding-left: 5%;margin-top: 3%;">Select Class</div>
+			<div class="autocomplete">
+				<input id="myInput" type="text" name="itemclass" placeholder="Type item name here">
+			</div>
+			<div class="btm_holder">
+				<input id="price" type="text" name="itemprice" placeholder="Price in $">
+				<div id="per_word">Per</div>
+				<div class="autocomplete" id="quantity_div">
+					<input id="quantity" type="text" name="itemquantity" placeholder="Quantity">
+				</div>
+			</div>
+			<button id="add_item_btn" onclick="additemfunc()">Add Item</button>
+
+			<!-- <select id="fruits_selector" class="js-example-basic-multiple" name="states[]" multiple="multiple"></select> -->
+			<div class="bottom_options">
+				<button id="save_btn">Send Image and Annotations</button>
+				<div id="del_btn"><i class="fas fa-trash-alt"></i></div>
+			</div>
 		</div>
 		<div id="container"></div>
 		<script src="annotate.js"></script> 
