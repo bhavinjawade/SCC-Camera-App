@@ -94,11 +94,19 @@ document.getElementById("icon_exp").addEventListener("click", function(){
         document.getElementById("label_box").style.height="83%";
         document.getElementById("label_box").style.opacity=1;
         document.getElementById("arrowoicon").style.transform="rotate(180deg)";    
+        document.getElementById("myInput").value = "";
+        document.getElementById("price").value = "";
+        document.getElementById("quantity").value = "";
+        document.getElementById("item_tablets").innerHTML = "";
         open = true;
     }else {
         document.getElementById("label_box").style.height="8%";
         document.getElementById("label_box").style.opacity=1;
-        document.getElementById("arrowoicon").style.transform="rotate(360deg)";    
+        document.getElementById("arrowoicon").style.transform="rotate(360deg)";
+        document.getElementById("myInput").value = "";
+        document.getElementById("price").value = "";
+        document.getElementById("quantity").value = "";
+        document.getElementById("item_tablets").innerHTML = "";
         open = false;
     }
 });
