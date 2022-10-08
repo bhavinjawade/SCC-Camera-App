@@ -1,0 +1,96 @@
+<html lang=”en”>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="manifest" href="manifest.json">
+
+		<!-- Name of the app -->
+		<title>Camera App</title>
+		<link rel="stylesheet" href="style.css"> 
+
+		<!-- Link to main style sheet -->
+		<link rel="stylesheet" href="style.css"> 
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/1e06482f92.js" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/konva@8.3.0/konva.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+		<script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+		  
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			const firebaseConfig = {
+			  apiKey: "AIzaSyA_NHf7tmCuxWw9Ci9By5p9nADiETKFIN8",
+			  authDomain: "sccproject-a4d93.firebaseapp.com",
+			  projectId: "sccproject-a4d93",
+			  storageBucket: "sccproject-a4d93.appspot.com",
+			  messagingSenderId: "280731228775",
+			  appId: "1:280731228775:web:e67b252e1d2d919ac6d2c2",
+			  measurementId: "G-FHLDVH890C"
+			};
+		  
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+		  </script>
+
+	</head>
+	<body>
+		
+		<div id="camera--header">
+			<i class="fas fa-bars"></i>
+			<a href="./index.html"><span id = "home"> Home </span></a>
+			<input type="file" id="input-file" style="display:none;">
+			<span id = "loadimages" onclick="document.getElementById('input-file').click();"> Load </span>
+		</div>
+		<div id = "img_thumbnails">
+			<img class="imgthumb" src='https://media.istockphoto.com/photos/square-background-made-of-vegetables-and-fruits-picture-id1253828014'/>
+		</div>
+		<div class = "label_box" id ="label_box">
+			<div id="glabel">
+				<span>Class Labels</span>
+				<span id="icon_exp"><i id = "arrowoicon" class="fas fa-chevron-up"></i></span>
+			</div>
+			<div class="item_tablets" id="item_tablets">
+				
+			</div>
+			<div class = "question" id = "question">
+				<input type="checkbox" id="isfimp" name="Is First Impression" value="True">
+				<label for="isfimp">Is First Impression</label><br>
+				<input type="checkbox" id="ispa" name="Is Produce Available" value="True">
+				<label for="ispa">Is Produce Available</label><br>
+			</div>
+			<div style="padding-left: 5%;margin-top: 3%;">Select Class</div>
+			<div class="autocomplete">
+				<input id="myInput" type="text" name="itemclass" placeholder="Type item name here">
+			</div>
+			<div class="btm_holder">
+				<input id="price" type="text" name="itemprice" placeholder="Price in $">
+				<div id="per_word">Per</div>
+				<div class="autocomplete" id="quantity_div">
+					<input id="quantity" type="text" name="itemquantity" placeholder="Quantity">
+				</div>
+			</div>
+			<button id="add_item_btn" onclick="additemfunc()">Add Item</button>
+
+			<!-- <select id="fruits_selector" class="js-example-basic-multiple" name="states[]" multiple="multiple"></select> -->
+			<div class="bottom_options">
+				<button id="save_btn">Send Image and Annotations</button>
+				<div id="del_btn"><i class="fas fa-trash-alt"></i></div>
+			</div>
+		</div>
+		<div id="container"></div>
+		<script src="annotate.js"></script> 
+	</body>
+</html>
