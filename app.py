@@ -16,7 +16,7 @@ import json
 device = torch.device("cpu")
 
 
-BASE_ADR = "./"
+BASE_ADR = "../"
 app = Flask(__name__)
 MODEL='../model_swin.pth'# Load the model for testing
 model = torch.load(MODEL, map_location=device)
