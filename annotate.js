@@ -345,8 +345,8 @@ function sendImages(dataToSend){
     }); // returns a promise
     
     req.then(function(response) {
-      console.log(response)
-      alert(response)
+      console.log(response.json())
+      alert(response.json())
     }, function(error) {
       alert('Saving failed due to network error or cross domain')
     })

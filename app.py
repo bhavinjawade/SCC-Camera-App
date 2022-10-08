@@ -13,6 +13,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import json
 from io import BytesIO
+from flask import jsonify
 
 device = torch.device("cpu")
 
@@ -64,9 +65,7 @@ def model_infer():
         predicitions.append(index_to_name_map[each])    
         
     return_dict = {"labels":predicitions}
-    json_object_predictions = json.dumps(return_dict)    
-    print(json_object_predictions)
-    return {"value" : json_object_predictions, "status": 200}
+    return jsonify({"value" : return_dict, "status": 200})
     
 @app.route('/scc_server_receive/', methods=['GET', 'POST'])
 def scc_server_receive():

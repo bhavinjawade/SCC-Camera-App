@@ -172,6 +172,8 @@ body {
     outline: none;
 }
 
+
+
 #getpredbtn{
     background-color: #6cf190;
     padding: 8px;
@@ -184,6 +186,7 @@ body {
     bottom: 100px;
     font-family: 'Montserrat';
     left: 30%;
+    z-index: 999999;
 }
 
 .item_tablets{
