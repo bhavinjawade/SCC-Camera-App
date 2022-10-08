@@ -68,26 +68,36 @@ function setLoc(pos) {
     longitude = pos.coords.longitude;
 }
 
-document.getElementById("save_btn").addEventListener("click", function(){
-    var attributes = [];
-    var allElements = items_list    
-    for (var i = 0; i < allElements.length; i++) {
-        attributes.push(allElements[i]);
-    }
-    console.log(attributes)
-
-    ImageAnnotations["img_"+currentImage]["tags"] = attributes;
-    ImageAnnotations["img_"+currentImage]["isfimp"] = document.getElementById("isfimp").checked;
-    ImageAnnotations["img_"+currentImage]["ispa"] = document.getElementById("ispa").checked;
+document.getElementById("getpredbtn").addEventListener("click", function(){
     ImageAnnotations["img_"+currentImage]["location"] = {
         "latitude": latitude,
         "longitude": longitude
     }
-
     ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
-    ImageAnnotations["img_"+currentImage]["seq_id"] = currentImage
     sendImages(ImageAnnotations["img_"+currentImage])
 });
+
+document.getElementById("save_btn").addEventListener("click", function(){
+  var attributes = [];
+  var allElements = items_list    
+  for (var i = 0; i < allElements.length; i++) {
+      attributes.push(allElements[i]);
+  }
+  console.log(attributes)
+
+  ImageAnnotations["img_"+currentImage]["tags"] = attributes;
+  ImageAnnotations["img_"+currentImage]["isfimp"] = document.getElementById("isfimp").checked;
+  ImageAnnotations["img_"+currentImage]["ispa"] = document.getElementById("ispa").checked;
+  ImageAnnotations["img_"+currentImage]["location"] = {
+      "latitude": latitude,
+      "longitude": longitude
+  }
+
+  ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
+  ImageAnnotations["img_"+currentImage]["seq_id"] = currentImage
+  sendImagesAndAnnotations(ImageAnnotations["img_"+currentImage])
+});
+
 
 document.getElementById("icon_exp").addEventListener("click", function(){
     if (!open){
@@ -321,15 +331,35 @@ for (var i = 0; i < elements.length; i++) {
 elements[0].click()
 
 function sendImages(dataToSend){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  headers.append('Accept', 'application/json');
+  headers.append('Origin',base_app_url + '/model_infer/');
+  console.log(dataToSend)
+  var req = fetch(base_app_url + '/model_infer/', {
+      method: 'POST',
+      body: JSON.stringify(dataToSend), /* or aFile[0]*/
+      mode: 'no-cors',
+      credentials: 'include',
+      headers: headers
+    }); // returns a promise
+    
+    req.then(function(response) {
+      console.log(response)
+      alert(response)
+    }, function(error) {
+      alert('Saving failed due to network error or cross domain')
+    })
+}
 
-
+function sendImagesAndAnnotations(dataToSend){
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Origin',base_app_url + '/model_infer/');
+    headers.append('Origin',base_app_url + '/scc_server_receive/');
     console.log(dataToSend)
-    var req = fetch(base_app_url + '/model_infer/', {
+    var req = fetch(base_app_url + '/scc_server_receive/', {
         method: 'POST',
         body: JSON.stringify(dataToSend), /* or aFile[0]*/
         mode: 'no-cors',
@@ -348,6 +378,8 @@ function sendImages(dataToSend){
         alert('Saving failed due to network error or cross domain')
       })
 }
+
+
 
 
 

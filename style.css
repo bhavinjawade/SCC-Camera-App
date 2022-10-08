@@ -172,6 +172,20 @@ body {
     outline: none;
 }
 
+#getpredbtn{
+    background-color: #6cf190;
+    padding: 8px;
+    margin-top: -7px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px 2px #d1d1d1;
+    float: right;
+    margin-right: 6%;
+    position: absolute;
+    bottom: 100px;
+    font-family: 'Montserrat';
+    left: 30%;
+}
+
 .item_tablets{
     padding: 3%;
     overflow-x: scroll;

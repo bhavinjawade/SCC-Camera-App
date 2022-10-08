@@ -12,6 +12,7 @@ from PIL import Image
 from pathlib import Path
 import matplotlib.pyplot as plt
 import json
+from io import BytesIO
 
 device = torch.device("cpu")
 
@@ -25,10 +26,10 @@ f = open('./scraped_det_test.json')
 test_annot_json = json.load(f)
 categories = test_annot_json['categories']
 index_to_name_map = {}
+threshold = 0.5
 
-for each  in index_to_name_map:
+for each  in categories:
     index_to_name_map[each['id']] = each['name']
-    print (index_to_name_map)
 
 preprocess = transforms.Compose([
     transforms.Resize(size=(224,224)),
@@ -39,18 +40,16 @@ preprocess = transforms.Compose([
 
 @app.route('/model_infer/', methods=['GET', 'POST'])
 def model_infer():
+    global threshold
     print("TESTING ENTRY")
     name = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
     content = json.loads(request.data)    
-    imgdata = base64.b64decode(content["image"].split(",")[1])
-    print(imgdata)    
+    imgdata = Image.open(BytesIO(base64.b64decode(content["image"].split(",")[1])))
     # img=Image.open(imgname).convert('RGB')
     inputs=preprocess(imgdata).unsqueeze(0).to(device)
     outputs = torch.sigmoid(model(inputs))
     outputs = outputs.cpu().detach().numpy()
-    print(outputs)
     preds = np.array(outputs > threshold, dtype=float)
-    print(preds)
     preds = np.where(preds[0] == 1)
     preds = preds[0]
     if (len(preds) == 0):
@@ -59,13 +58,14 @@ def model_infer():
         preds = np.array(outputs > threshold, dtype=float)
         preds = np.where(preds[0] == 1)
         preds = preds[0]    
-        predicitions = []
+    predicitions = []
     
     for each in preds:
         predicitions.append(index_to_name_map[each])    
-        print (predicitions)
-    return_dict = {name:predicitions}
+        
+    return_dict = {"labels":predicitions}
     json_object_predictions = json.dumps(return_dict)    
+    print(json_object_predictions)
     return {"value" : json_object_predictions, "status": 200}
     
 @app.route('/scc_server_receive/', methods=['GET', 'POST'])
