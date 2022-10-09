@@ -4,7 +4,7 @@ var open = false;
 var ImageAnnotations = {}
 var currentImage = ""
 
-var base_app_url = "https://e562-128-205-33-151.ngrok.io"
+var base_app_url = "https://d686-128-205-33-151.ngrok.io"
 
 var items_list = []
 

@@ -77,7 +77,7 @@ def model_infer():
 def scc_server_receive():
     name = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
     content = json.loads(request.data)
-    print(content, file=sys.stderr)
+    # print(content, file=sys.stderr)
     with open(BASE_ADR + "/image_dataset/image_" + str(content["image_id"]) + "_" + name + ".png", "wb") as fh:
         imgdata = base64.b64decode(content["image"].split(",")[1])
         fh.write(imgdata)

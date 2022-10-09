@@ -22,7 +22,7 @@ function download(content, fileName, contentType) {
 var constraints = { video: { facingMode: { exact: 'environment' } }, audio: false };
 var track = null;
 var fd = new FormData();
-var base_app_url = "https://c2f6-128-205-33-32.ngrok.io"
+var base_app_url = "https://d686-128-205-33-151.ngrok.io"
 // Define constants
 function getlocation() {
   navigator.geolocation.getCurrentPosition(setLoc);
