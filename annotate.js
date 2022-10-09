@@ -358,6 +358,7 @@ function sendImages(dataToSend){
       mode: 'no-cors',
     }).then(response => response.json())
     .then(response => {
+      alert(response)
       console.log(response)
     })
 }
