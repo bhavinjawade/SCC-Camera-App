@@ -8,7 +8,7 @@ var base_app_url = "https://e562-128-205-33-151.ngrok.io"
 
 var items_list = []
 
-var sample_labels = ["Apple", "Banana", "Mango", "Orange"]
+var sample_labels = [] //["Apple", "Banana", "Mango", "Orange"]
 
 fetch('./fruits_list_updated.txt')
   .then(response => response.text())
@@ -358,7 +358,7 @@ function sendImages(dataToSend){
     }).then(response => response.json())
     .then(response => {
       alert(response)
-      console.log(response)
+      sample_labels = response["data"]
     })
 }
 
