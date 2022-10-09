@@ -1,3 +1,4 @@
+from urllib import response
 from flask import Flask, request, jsonify
 import base64
 import sys
@@ -39,7 +40,7 @@ preprocess = transforms.Compose([
                             [0.229, 0.224, 0.225])
 ])
 
-@app.route('/model_infer/', methods=['GET', 'POST'])
+@app.route('/model_infer/', methods=['POST'])
 def model_infer():
     global threshold
     print("TESTING ENTRY")
@@ -65,7 +66,12 @@ def model_infer():
         predicitions.append(index_to_name_map[each])    
         
     return_dict = {"labels":predicitions}
-    return jsonify({"value" : return_dict, "status": 200})
+    print({"value" : return_dict, "status": 200})
+    response = jsonify(data = predicitions)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Credentials', 'true')
+    response.headers.add('status',200)
+    return response
     
 @app.route('/scc_server_receive/', methods=['GET', 'POST'])
 def scc_server_receive():

@@ -4,9 +4,11 @@ var open = false;
 var ImageAnnotations = {}
 var currentImage = ""
 
-var base_app_url = "https://1700-128-205-33-151.ngrok.io"
+var base_app_url = "https://e562-128-205-33-151.ngrok.io"
 
 var items_list = []
+
+var sample_labels = ["Apple", "Banana", "Mango", "Orange"]
 
 fetch('./fruits_list_updated.txt')
   .then(response => response.text())
@@ -75,7 +77,20 @@ document.getElementById("getpredbtn").addEventListener("click", function(){
     }
     ImageAnnotations["img_"+currentImage]["image"] = images[currentImage][1];
     sendImages(ImageAnnotations["img_"+currentImage])
-});
+    // var price = "NA"
+    // var quantity = "NA"
+    for (var i = 0; i < sample_labels.length; i++) {
+      document.getElementById("item_tablets").innerHTML += 
+                "<div class='tablet' id = '" + sample_labels[i] + "' onclick='editItem(\"" + sample_labels[i] + "\")'> \
+                    <div class='tabtext item'>" + sample_labels[i] + "</div>"
+                "</div>"
+    }
+  });
+
+function editItem(item){
+  document.getElementById("myInput").value = item;
+  document.getElementById(item).style.display = "None";
+}
 
 document.getElementById("save_btn").addEventListener("click", function(){
   var attributes = [];
@@ -334,21 +349,16 @@ function sendImages(dataToSend){
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('Accept', 'application/json');
+  
   headers.append('Origin',base_app_url + '/model_infer/');
   console.log(dataToSend)
-  var req = fetch(base_app_url + '/model_infer/', {
+  fetch(base_app_url + '/model_infer/', {
       method: 'POST',
       body: JSON.stringify(dataToSend), /* or aFile[0]*/
       mode: 'no-cors',
-      credentials: 'include',
-      headers: headers
-    }); // returns a promise
-    
-    req.then(function(response) {
-      console.log(response.json())
-      alert(response.json())
-    }, function(error) {
-      alert('Saving failed due to network error or cross domain')
+    }).then(response => response.json())
+    .then(response => {
+      console.log(response)
     })
 }
 
@@ -450,6 +460,7 @@ function autocomplete(inp, arr) {
           }
         }
     });
+
     function addActive(x) {
       /*a function to classify an item as "active":*/
       if (!x) return false;
