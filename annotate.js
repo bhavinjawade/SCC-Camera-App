@@ -355,7 +355,6 @@ function sendImages(dataToSend){
   fetch(base_app_url + '/model_infer/', {
       method: 'POST',
       body: JSON.stringify(dataToSend), /* or aFile[0]*/
-      mode: 'no-cors',
     }).then(response => response.json())
     .then(response => {
       alert(response)
