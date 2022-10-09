@@ -79,12 +79,6 @@ document.getElementById("getpredbtn").addEventListener("click", function(){
     sendImages(ImageAnnotations["img_"+currentImage])
     // var price = "NA"
     // var quantity = "NA"
-    for (var i = 0; i < sample_labels.length; i++) {
-      document.getElementById("item_tablets").innerHTML += 
-                "<div class='tablet' id = '" + sample_labels[i] + "' onclick='editItem(\"" + sample_labels[i] + "\")'> \
-                    <div class='tabtext item'>" + sample_labels[i] + "</div>"
-                "</div>"
-    }
   });
 
 function editItem(item){
@@ -357,8 +351,13 @@ function sendImages(dataToSend){
       body: JSON.stringify(dataToSend), /* or aFile[0]*/
     }).then(response => response.json())
     .then(response => {
-      alert(response)
       sample_labels = response["data"]
+      for (var i = 0; i < sample_labels.length; i++) {
+        document.getElementById("item_tablets").innerHTML += 
+                  "<div class='tablet' id = '" + sample_labels[i] + "' onclick='editItem(\"" + sample_labels[i] + "\")'> \
+                      <div class='tabtext item'>" + sample_labels[i] + "</div>"
+                  "</div>"
+      }  
     })
 }
 
