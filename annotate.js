@@ -83,6 +83,8 @@ document.getElementById("getpredbtn").addEventListener("click", function(){
 
 function editItem(item){
   document.getElementById("myInput").value = item;
+  document.getElementById("price").value = "";
+  document.getElementById("quantity").value = "";
   document.getElementById(item).style.display = "None";
 }
 
@@ -353,8 +355,8 @@ function sendImages(dataToSend){
     .then(response => {
       sample_labels = response["data"]
       for (var i = 0; i < sample_labels.length; i++) {
-        document.getElementById("item_tablets").innerHTML += 
-                  "<div class='tablet' id = '" + sample_labels[i] + "' onclick='editItem(\"" + sample_labels[i] + "\")'> \
+        document.getElementById("pred_item_tablets").innerHTML += 
+                  "<div class='pred_tablet' id = '" + sample_labels[i] + "' onclick='editItem(\"" + sample_labels[i] + "\")'> \
                       <div class='tabtext item'>" + sample_labels[i] + "</div>"
                   "</div>"
       }  

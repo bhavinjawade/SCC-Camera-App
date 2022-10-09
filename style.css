@@ -178,7 +178,7 @@ body {
     border-color: #d1e500;
     width: 91%;
     margin-left: 5%;
-    padding: 4%;
+    padding: 2%;
     margin-top: 3%;
     background-color: #d1e500;
     text-align: center;
@@ -197,9 +197,14 @@ body {
     white-space: nowrap;
 }
 
-.bottom_options{
-    
+.pred_item_tablets{
+    padding: 3%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    white-space: nowrap;
 }
+
 
 .tablet{
     width: fit-content;
@@ -207,6 +212,18 @@ body {
     background-color: gold;
     border-radius: 45px;
     display: inline-block;
+    margin-right: 2%;
+    font-size: 0.7em;
+
+}
+
+.pred_tablet{
+    width: fit-content;
+    padding: 2%;
+    background-color: gainsboro;
+    border-radius: 45px;
+    display: inline-block;
+    font-size: 0.7em;
     margin-right: 2%;
 }
 
