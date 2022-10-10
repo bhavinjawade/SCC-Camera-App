@@ -19,7 +19,7 @@ from flask import jsonify
 device = torch.device("cpu")
 
 
-BASE_ADR = "../"
+BASE_ADR = "/home/dmohan/sccpgdemo/json_files"
 app = Flask(__name__)
 MODEL='../model_swin.pth'# Load the model for testing
 model = torch.load(MODEL, map_location=device)
@@ -28,7 +28,7 @@ f = open('./scraped_det_test.json')
 test_annot_json = json.load(f)
 categories = test_annot_json['categories']
 index_to_name_map = {}
-threshold = 0.5
+threshold = 0.2
 
 for each  in categories:
     index_to_name_map[each['id']] = each['name']
@@ -47,7 +47,7 @@ def model_infer():
     name = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
     content = json.loads(request.data)    
     imgdata = Image.open(BytesIO(base64.b64decode(content["image"].split(",")[1])))
-    # img=Image.open(imgname).convert('RGB')
+    imgdata = imgdata.convert('RGB')
     inputs=preprocess(imgdata).unsqueeze(0).to(device)
     outputs = torch.sigmoid(model(inputs))
     outputs = outputs.cpu().detach().numpy()
@@ -78,10 +78,10 @@ def scc_server_receive():
     name = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
     content = json.loads(request.data)
     # print(content, file=sys.stderr)
-    with open(BASE_ADR + "/image_dataset/image_" + str(content["image_id"]) + "_" + name + ".png", "wb") as fh:
+    with open(BASE_ADR + "/image_" + str(content["image_id"]) + "_" + name + ".png", "wb") as fh:
         imgdata = base64.b64decode(content["image"].split(",")[1])
         fh.write(imgdata)
-    with open(BASE_ADR + "/image_dataset/data_" + str(content["image_id"]) + "_" + name + ".json", "w") as file:
+    with open(BASE_ADR + "/data_" + str(content["image_id"]) + "_" + name + ".json", "w") as file:
         del content["image"]
         json.dump(content, file)    
     

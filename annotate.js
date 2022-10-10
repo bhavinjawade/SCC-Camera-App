@@ -31,6 +31,9 @@ function additemfunc(){
     console.log(item, price, quantity)
     items_list.push([item, price, quantity])
     document.getElementById("item_tablets").innerHTML += "<div class='tablet'><div class='tabtext item'>" + item + " </div><div class='tabtext price'>&nbsp $"+ price + "</div><div class='tabtext quanity'>/" + quantity + "</div></div>"
+    document.getElementById("myInput").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("quantity").value = "";
 }
   
 document.getElementById('input-file')
