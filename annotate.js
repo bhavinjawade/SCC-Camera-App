@@ -4,7 +4,7 @@ var open = false;
 var ImageAnnotations = {}
 var currentImage = ""
 
-var base_app_url = "https://baff-128-205-33-151.ngrok-free.app"
+var base_app_url = "https://cf6e-128-205-33-151.ngrok-free.app"
 
 var items_list = []
 
