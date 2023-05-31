@@ -200,144 +200,144 @@ for (var i = 0; i < elements.length; i++) {
             layer.add(selectionRectangle);
 
             var x1, y1, x2, y2;
-            stage.on('mousedown touchstart', (e) => {
-                // do nothing if we mousedown on any shape
-                if (e.target !== stage) {
-                    return;
-                }
-                e.evt.preventDefault();
-                x1 = stage.getPointerPosition().x;
-                y1 = stage.getPointerPosition().y;
-                x2 = stage.getPointerPosition().x;
-                y2 = stage.getPointerPosition().y;
+//             stage.on('mousedown touchstart', (e) => {
+//                 // do nothing if we mousedown on any shape
+//                 if (e.target !== stage) {
+//                     return;
+//                 }
+//                 e.evt.preventDefault();
+//                 x1 = stage.getPointerPosition().x;
+//                 y1 = stage.getPointerPosition().y;
+//                 x2 = stage.getPointerPosition().x;
+//                 y2 = stage.getPointerPosition().y;
 
-                selectionRectangle.visible(true);
-                selectionRectangle.width(0);
-                selectionRectangle.height(0);
-            });
+//                 selectionRectangle.visible(true);
+//                 selectionRectangle.width(0);
+//                 selectionRectangle.height(0);
+//             });
 
 
-            stage.on('mousemove touchmove', (e) => {
-                // do nothing if we didn't start selection
-                if (!selectionRectangle.visible()) {
-                    return;
-                }
-                e.evt.preventDefault();
-                x2 = stage.getPointerPosition().x;
-                y2 = stage.getPointerPosition().y;
+//             stage.on('mousemove touchmove', (e) => {
+//                 // do nothing if we didn't start selection
+//                 if (!selectionRectangle.visible()) {
+//                     return;
+//                 }
+//                 e.evt.preventDefault();
+//                 x2 = stage.getPointerPosition().x;
+//                 y2 = stage.getPointerPosition().y;
 
-                selectionRectangle.setAttrs({
-                    x: Math.min(x1, x2),
-                    y: Math.min(y1, y2),
-                    width: Math.abs(x2 - x1),
-                    height: Math.abs(y2 - y1),
-                });
-            });
+//                 selectionRectangle.setAttrs({
+//                     x: Math.min(x1, x2),
+//                     y: Math.min(y1, y2),
+//                     width: Math.abs(x2 - x1),
+//                     height: Math.abs(y2 - y1),
+//                 });
+//             });
 
-            stage.on('mouseup touchend', (e) => {
-                // do nothing if we didn't start selection
-                if (!selectionRectangle.visible()) {
-                    return;
-                }
-                e.evt.preventDefault();
-                // update visibility in timeout, so we can check it in click event
-                setTimeout(() => {
-                    selectionRectangle.visible(false);
-                });
+//             stage.on('mouseup touchend', (e) => {
+//                 // do nothing if we didn't start selection
+//                 if (!selectionRectangle.visible()) {
+//                     return;
+//                 }
+//                 e.evt.preventDefault();
+//                 // update visibility in timeout, so we can check it in click event
+//                 setTimeout(() => {
+//                     selectionRectangle.visible(false);
+//                 });
 
-                var shapes = stage.find('.rect');
-                var box = selectionRectangle.getClientRect();
-                var selected = shapes.filter((shape) =>
-                    Konva.Util.haveIntersection(box, shape.getClientRect())
-                );
-                tr.nodes(selected);
-            });
-            var rect_count = 0
-            function createRect(x, y) {
-                console.log("Inside createRect")
-                var group = new Konva.Group({
-                    name: 'rect_btn_grp'
-                })
-                var rect2 = new Konva.Rect({
-                    x: x,
-                    y: y,
-                    width: 100,
-                    height: 90,
-                    fill: 'transparent',
-                    name: 'rect',
-                    draggable: true,
-                });
-                rect2.name('box_'+rect_count)
-                rect_count += 1
-                var button = new Konva.Label({
-                    x: x,
-                    y: y,
-                    opacity: 0.75,
-                });
-                button.add(new Konva.Tag({
-                    fill: 'white',
-                    lineJoin: 'round',
-                    shadowColor: 'white',
-                    shadowBlur: 10,
-                    shadowOffset: 10,
-                    shadowOpacity: 0.5
-                }));
+//                 var shapes = stage.find('.rect');
+//                 var box = selectionRectangle.getClientRect();
+//                 var selected = shapes.filter((shape) =>
+//                     Konva.Util.haveIntersection(box, shape.getClientRect())
+//                 );
+//                 tr.nodes(selected);
+//             });
+//             var rect_count = 0
+//             function createRect(x, y) {
+//                 console.log("Inside createRect")
+//                 var group = new Konva.Group({
+//                     name: 'rect_btn_grp'
+//                 })
+//                 var rect2 = new Konva.Rect({
+//                     x: x,
+//                     y: y,
+//                     width: 100,
+//                     height: 90,
+//                     fill: 'transparent',
+//                     name: 'rect',
+//                     draggable: true,
+//                 });
+//                 rect2.name('box_'+rect_count)
+//                 rect_count += 1
+//                 var button = new Konva.Label({
+//                     x: x,
+//                     y: y,
+//                     opacity: 0.75,
+//                 });
+//                 button.add(new Konva.Tag({
+//                     fill: 'white',
+//                     lineJoin: 'round',
+//                     shadowColor: 'white',
+//                     shadowBlur: 10,
+//                     shadowOffset: 10,
+//                     shadowOpacity: 0.5
+//                 }));
                 
-                button.add(new Konva.Text({
-                    text: 'X',
-                    fontSize: 18,
-                    padding: 5,
-                    fill: 'black'
-                }));
-                // layer.add(rect2);
-                // layer.add(button); 
-                // layer.add(tr1);                
+//                 button.add(new Konva.Text({
+//                     text: 'X',
+//                     fontSize: 18,
+//                     padding: 5,
+//                     fill: 'black'
+//                 }));
+//                 // layer.add(rect2);
+//                 // layer.add(button); 
+//                 // layer.add(tr1);                
 
-                var tr1 = new Konva.Transformer();
-                tr1.borderStrokeWidth(3);
-                tr1.borderStroke("white")
-                // by default select all shapes
-                var nodelist = [rect2, button]
-                tr1.nodes(nodelist);
-                group.add(rect2)
-                group.add(button)
-                group.add(tr1)
-                layer.add(group);
-                button.on('click tap', function (e) {
-                    tr1.destroy();
-                    rect2.destroy();
-                    button.destroy();
-                    group.destroy();
-                    layer.draw();
-                });
-            }
+//                 var tr1 = new Konva.Transformer();
+//                 tr1.borderStrokeWidth(3);
+//                 tr1.borderStroke("white")
+//                 // by default select all shapes
+//                 var nodelist = [rect2, button]
+//                 tr1.nodes(nodelist);
+//                 group.add(rect2)
+//                 group.add(button)
+//                 group.add(tr1)
+//                 layer.add(group);
+//                 button.on('click tap', function (e) {
+//                     tr1.destroy();
+//                     rect2.destroy();
+//                     button.destroy();
+//                     group.destroy();
+//                     layer.draw();
+//                 });
+//             }
 
-            stage.on('dblclick dbltap', function (e) {
-                console.log(e.target.className)
-                // if we are selecting with rect, do nothing
-                if (e.target.className == 'Rect') {
-                    console.log("Rectangle", e.target.attrs.name)
-                    return;
-                }
+//             stage.on('dblclick dbltap', function (e) {
+//                 console.log(e.target.className)
+//                 // if we are selecting with rect, do nothing
+//                 if (e.target.className == 'Rect') {
+//                     console.log("Rectangle", e.target.attrs.name)
+//                     return;
+//                 }
 
-                // if click on empty area - remove all selections
-                if (e.target === stage) {
-                    console.log("Empty Area")
-                    tr.nodes([]);
-                    return;
-                }
+//                 // if click on empty area - remove all selections
+//                 if (e.target === stage) {
+//                     console.log("Empty Area")
+//                     tr.nodes([]);
+//                     return;
+//                 }
 
-                // do nothing if clicked NOT on our rectangles
+//                 // do nothing if clicked NOT on our rectangles
 
-                if (e.target.className == 'Image') {
-                    console.log("Empty Area - not rect", e)
-                    var pos = stage.getPointerPosition();
-                    createRect(pos.x, pos.y)
-                    var all_rectangles = layer.find('.rect_btn_grp');
-                    console.log(all_rectangles)
-                    return;
-                }
-            });
+//                 if (e.target.className == 'Image') {
+//                     console.log("Empty Area - not rect", e)
+//                     var pos = stage.getPointerPosition();
+//                     createRect(pos.x, pos.y)
+//                     var all_rectangles = layer.find('.rect_btn_grp');
+//                     console.log(all_rectangles)
+//                     return;
+//                 }
+//             });
         };
     });
 }
