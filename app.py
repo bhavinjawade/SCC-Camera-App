@@ -21,7 +21,7 @@ device = torch.device("cpu")
 
 BASE_ADR = "/home/dmohan/sccpgdemo/json_files"
 app = Flask(__name__)
-MODEL='../model_swin.pth'# Load the model for testing
+MODEL='./model_swin.pth'# Load the model for testing
 model = torch.load(MODEL, map_location=device)
 model.eval()
 f = open('./scraped_det_test.json')
